@@ -1,0 +1,53 @@
+{% extends "passwordmanager/base.html" %}
+{% block content %}
+	{% block content1 %}{% endblock content1 %}
+	<h1>
+		Account Details
+	</h1>
+	<div class="row">
+		<div class="col-md-6">
+			<p>
+				Name: {{ object.name }}<br>
+				Username: {{ object.username }}<br>
+				Email: {{ object.email }}<br><br>
+				Password: 
+				{% block content2 %}
+					----------------<br>
+					<a href="{% url 'account-shown' pk=account.pk %}">
+						<button class="btn btn-outline-info">
+							Show
+						</button>
+					</a><br><br>
+				{% endblock content2 %}
+				Link: {{ object.link }}<br>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			Notes: {{ object.notes }}<br><br>
+		</div>
+	</div>
+
+	{% block content_detail_buttons %}
+		<div>
+			<a href="{% url 'account-update' pk=account.pk %}">
+				<button class="btn btn-primary">
+					Update
+				</button>
+			</a>
+			<a href="{% url 'account-list' %}">
+				<button class="btn btn-outline-info">
+					Home
+				</button>
+			</a>
+			<a href="{% url 'confirm-delete' pk=account.pk %}">
+				<button class="btn btn-outline-info">
+					Delete
+				</button>
+			</a>
+		</div>
+	{% endblock content_detail_buttons %}
+
+	<br><br>
+{% endblock content %}

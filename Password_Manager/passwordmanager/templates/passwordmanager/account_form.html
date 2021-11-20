@@ -1,0 +1,38 @@
+{% extends "passwordmanager/base.html" %}
+{% block content %}
+	<form method="POST">
+		{% csrf_token %}
+		<fieldset class="form-group">
+			<h1>
+				Account Details
+			</h1>
+			<div class="row">
+				<div class="col-md">
+					<p>
+						Name: {{ form.name }}<br><br>
+						Username: {{ form.username }}<br><br>
+						Email: {{ form.email }}<br><br>
+						Password: {{ form.password }}<br><br>
+						Link: {{ form.link }}<br><br>
+						Notes:<br>{{ form.notes }}<br><br>
+					</p>
+				</div>
+			</div>
+		</fieldset>
+
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">
+				Submit
+			</button>
+			<button type="reset" class="btn btn-outline-info">
+				Reset
+			</button>
+			<a href="{% url 'account-list' %}">
+				<button type="button" class="btn btn-outline-info">
+					Cancel
+				</button>
+			</a>
+		</div>
+	</form>
+	<br><br>
+{% endblock content %}

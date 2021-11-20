@@ -1,0 +1,41 @@
+{% extends "passwordmanager/base.html" %}
+{% block content %}
+	<div class="row">
+		<div class="col-md">
+			<h1>
+				Account List
+			</h1>
+			<p>
+				{% for account in object_list %}
+					<article class="media content-section">
+						<div class="col-md-10">
+							<a href="{% url 'account-detail' pk=account.pk %}">
+								{{ account.name }}
+							</a>
+							 - 
+							{% if account.username %}
+								{{ account.username }}
+							{% else %}
+								No Username
+							{% endif %}
+							 - 
+							{% if account.email %}
+								{{ account.email }}
+							{% else %}
+								No Email
+							{% endif %}
+						</div>
+						<div class="col-md-4">
+							<a href="{% url 'confirm-delete' pk=account.pk %}">
+								<button class="btn btn-outline-danger">
+									Delete
+								</button>
+							</a>
+						</div>
+					</article>
+				{% endfor %}
+			</p>
+		</div>
+	</div>
+	<br><br>
+{% endblock content %}
